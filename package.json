@@ -6,7 +6,8 @@
 		"discord.js": "latest"
 	},
 	"scripts": {
-		"start": "node index.js"
+		"start": "node index.js",
+		"gui": "devtool index.js"
 	}
 }
 
