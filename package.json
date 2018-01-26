@@ -1,0 +1,12 @@
+{
+	"name": "morse-bot",
+	"version": "0.1.0",
+	"devDependencies": {
+		"jquery": "latest",
+		"discord.js": "latest"
+	},
+	"scripts": {
+		"start": "node index.js"
+	}
+}
+
