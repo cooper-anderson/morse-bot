@@ -51,3 +51,9 @@ bot.on("message", function(msg) {
 	}
 });
 
+process.on("SIGINT", function() {
+	bot.destroy();
+	console.log("\n\nLogging out of bot.\n[Process closed]");
+	process.exit();
+});
+
