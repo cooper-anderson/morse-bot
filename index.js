@@ -36,16 +36,18 @@ tapMessage = function(string="- . ... -"/*". .–. .–. ––– .–. ––�
 }
 
 bot.on("message", function(msg) {
-	if (msg.channel.name == "morse") {
-		let content = msg.content.replace(/<@![0-9]{18}>/g, "");
+	if (msg.content.startsWith("<@406264254631772160>")) {
+		tapMessage(msg.content.substr(22).trim());
+		msg.delete();
+	} else if (msg.channel.name == "morse") {
+		let content = msg.content.replace(/<@![0-9]{16,}>/g, "");
+		if (content.trim() == "") {
+			return;
+		}
 		if (content.match(/^ *`[-.·•–—_ ]*` *$/g) == null) {
-			msg.channel.send("<@!" + message.author.id + "> `. .–. .–. ––– .–. –––...   –– . ... ... .– ––. . ...   –– ..– ... –   –... .   ... . –. –   ..– ... .. –. ––.   –– ––– .–. ... .   –.–. ––– –.. .`");
+			msg.channel.send("<@!" + msg.author.id + "> `. .–. .–. ––– .–. –––...   –– . ... ... .– ––. . ...   –– ..– ... –   –... .   ... . –. –   ..– ... .. –. ––.   –– ––– .–. ... .   –.–. ––– –.. .`");
 			msg.delete();
 		}
-	}
-	if (msg.content.startsWith("<@406264254631772160>")) {
-		tapMessage(msg.content.substr(22));
-		msg.delete();
 	}
 });
 
