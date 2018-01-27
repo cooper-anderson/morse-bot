@@ -14,8 +14,8 @@ error = false;
 message = false;
 
 tapMessage = function(string="- . ... -"/*". .–. .–. ––– .–. –––...   –– . ... ... .– ––. . ...   –– ..– ... –   –... .   ... . –. –   ..– ... .. –. ––.   –– ––– .–. ... .   –.–. ––– –.. ."*/.split(""), timeMultiplier=250) {
-	lengths = {dot: 1, dash: 3, space: 3, gap: 1, general: timeMultiplier};
-	time = 0;
+	lengths = {dot: 1, dash: 3, space: 3, gap: 1, start: 3, general: timeMultiplier};
+	time = lengths.start * lengths.general;
 	signals = {idle: "online", on: "idle", off: "dnd"};
 	tap = function(signal) {
 		setTimeout(function() { bot.user.setStatus(signals.on); }, time);
@@ -31,6 +31,7 @@ tapMessage = function(string="- . ... -"/*". .–. .–. ––– .–. ––�
 			time += lengths.space * lengths.general;
 		}
 	}
+	bot.user.setStatus(signals.off);
 	setTimeout(function() { bot.user.setStatus(signals.idle) }, time);
 }
 
